@@ -1,0 +1,66 @@
+.main{
+    margin-top: 100rpx;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .left{
+        width: 200rpx;
+        background-color: #f4f4f4;
+        flex-shrink: 0;
+        .menu{
+            font-size: 16px;
+            text-align: center;
+            height: 100rpx;
+            line-height: 100rpx;
+            position: relative;
+            &.active{
+                background-color: #fff;
+                color: #ff2d4a;
+                font-weight: 700;
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 10rpx;
+                    height: 60rpx;
+                    background-color: #ff2d4a;
+                    position: absolute;
+                    top: 20rpx;
+                    left: 0;
+                }
+            }
+        }
+    }
+    .right{
+        flex: 1;
+        .title{
+            text-align: center;
+            line-height: 100rpx;
+            color: #3b3b3b;
+            span{
+                color: #eee;
+                padding: 0 20rpx;
+            }
+        }
+        .info{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20rpx;
+            .content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 33.33%;
+                img{
+                    width: 200rpx;
+                    height: 200rpx;
+                }
+                p{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
