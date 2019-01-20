@@ -6,13 +6,16 @@
     "pages/me/main"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ff4d2a",
+    "navigationBarTitleText": "myshop",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "selectedColor":"#ff2d4a",
+    "color":"#666",
     "list": [
       {
         "pagePath": "pages/index/main",
