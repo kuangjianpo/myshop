@@ -1,14 +1,7 @@
 <template>
   <div class="container">
     <!-- 搜索框 -->
-    <div class="search-wrap">
-      <div class="search">
-        <icon
-          type="search"
-          size="14"
-        />搜索
-      </div>
-    </div>
+    <search/>
     <!-- 轮播图 -->
     <div class="swiper">
       <swiper
@@ -77,7 +70,13 @@
 </template>
 
 <script>
+  import Search from '../../components/search.vue'
+  import request from '../../utils/request.js'
+
 export default {
+  components:{
+    Search
+  },
   data() {
     return {
       swiperList: [],
@@ -85,35 +84,35 @@ export default {
       floorList: []
     };
   },
-  mounted() {
-    wx.request({
-      url: "https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata",
-      success: res => {
-        // console.log(res);
+  methods: {
+    async getData(){
+      // 获取轮播图数据
+      try {
+        let res = await request.get("https://www.zhengzhicheng.cn/api/public/v1/home/swiperdata").then(res => {
         const { message } = res.data;
         this.swiperList = message;
-        // console.log(this.swiperList);
-      }
-    }),
-      wx.request({
-        url: "https://www.zhengzhicheng.cn/api/public/v1/home/catitems",
-        success: res => {
-          console.log(res);
-          const { message } = res.data;
-          this.navList = message;
-        }
-      }),
-      wx.request({
-        url: "https://www.zhengzhicheng.cn/api/public/v1/home/floordata",
-        success: res => {
-          // console.log(res);
-          const { message } = res.data;
-          this.floorList = message;
-          // console.log(this.floorList);
-        }
-      });
+        })
+      } catch (error) {}
+      // 获取导航栏数据
+      try {
+        let res = await request.get("https://www.zhengzhicheng.cn/api/public/v1/home/catitems").then(res => {
+        const { message } = res.data;
+        this.navList = message;
+        })
+      } catch (error) {}
+      // 获取楼层数据
+      try {
+        let res = await request.get("https://www.zhengzhicheng.cn/api/public/v1/home/floordata").then(res => {
+        const { message } = res.data;
+        this.floorList = message;
+        })
+      } catch (error) {}
+    }
+  },
+  mounted() {
+    this.getData()
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
